@@ -14,7 +14,7 @@ import java.util.Date;
 public class PlaneGameFrame extends Frame {
     Image bg = GameUtil.getImage("bg.jpg");
     Plane plane = new Plane("plane.png", 50, 50);
-    ArrayList bulletList = new ArrayList();   //·ºĞÍÔİÊ±Î´Ñ§£¬Ôİ²»¼Ó¡£ÒÔºóÑ§ÁË£¬Ç¿ÁÒ½¨Òé¼ÓÉÏ¡£
+    ArrayList bulletList = new ArrayList();   //æ³›å‹æš‚æ—¶æœªå­¦ï¼Œæš‚ä¸åŠ ã€‚ä»¥åå­¦äº†ï¼Œå¼ºçƒˆå»ºè®®åŠ ä¸Šã€‚
 
     Date startTime;
     Date endTime;
@@ -22,7 +22,7 @@ public class PlaneGameFrame extends Frame {
     Explode explode;
 
     /**
-     * ¼ÓÔØ´°¿Ú
+     * åŠ è½½çª—å£
      */
     public void launchFrame() {
         setSize(Constant.GAME_WIDTH, Constant.GAME_HEIGHT);
@@ -38,11 +38,11 @@ public class PlaneGameFrame extends Frame {
             }
         });
 
-        //Ôö¼Ó¼üÅÌµÄ¼àÌı
+        //å¢åŠ é”®ç›˜çš„ç›‘å¬
         addKeyListener(new KeyMonotor());
 
         plane.setIsLive(true);
-        //Éú³ÉÒ»¶Ñ×Óµ¯
+        //ç”Ÿæˆä¸€å †å­å¼¹
         for (int i = 0; i < 30; i++) {
             Bullet bullet = new Bullet();
             bulletList.add(bullet);
@@ -79,28 +79,28 @@ public class PlaneGameFrame extends Frame {
             switch (period / 10) {
                 case 0:
                 case 1:
-                    printInfo(graphics, "²ËÄñ", 50, 100, 200, Color.white);
+                    printInfo(graphics, "èœé¸Ÿ", 50, 100, 200, Color.white);
                     break;
                 case 2:
-                    printInfo(graphics, "Ğ¡Äñ", 50, 100, 200, Color.white);
+                    printInfo(graphics, "å°é¸Ÿ", 50, 100, 200, Color.white);
                     break;
                 case 3:
-                    printInfo(graphics, "´óÄñ", 50, 100, 200, Color.yellow);
+                    printInfo(graphics, "å¤§é¸Ÿ", 50, 100, 200, Color.yellow);
                     break;
                 case 4:
-                    printInfo(graphics, "ÄñÍõ×Ó", 50, 100, 200, Color.yellow);
+                    printInfo(graphics, "é¸Ÿç‹å­", 50, 100, 200, Color.yellow);
                     break;
                 default:
-                    printInfo(graphics, "ÄñÈË", 50, 100, 200, Color.yellow);
+                    printInfo(graphics, "é¸Ÿäºº", 50, 100, 200, Color.yellow);
                     break;
             }
 
         }
-        printInfo(graphics, "·ÖÊı£º100", 10, 50, 50, Color.yellow);
+        printInfo(graphics, "åˆ†æ•°ï¼š100", 10, 50, 50, Color.yellow);
     }
 
     /**
-     * ÔÚ´°¿ÚÉÏ´òÓ¡ĞÅÏ¢
+     * åœ¨çª—å£ä¸Šæ‰“å°ä¿¡æ¯
      *
      * @param g
      * @param str
@@ -109,7 +109,7 @@ public class PlaneGameFrame extends Frame {
     public void printInfo(Graphics g, String str, int size, int x, int y, Color color) {
         Color c = g.getColor();
         g.setColor(color);
-        Font font = new Font("ËÎÌå", Font.BOLD, size);
+        Font font = new Font("å®‹ä½“", Font.BOLD, size);
         g.setFont(font);
         g.drawString(str, x, y);
         g.setColor(c);
@@ -132,7 +132,7 @@ public class PlaneGameFrame extends Frame {
     }
 
     /**
-     * ¶¨ÒåÒ»¸öÖØ»­´°¿ÚµÄÏß³ÌÀà£¬ÊÇÒ»¸öÄÚ²¿Àà
+     * å®šä¹‰ä¸€ä¸ªé‡ç”»çª—å£çš„çº¿ç¨‹ç±»ï¼Œæ˜¯ä¸€ä¸ªå†…éƒ¨ç±»
      */
     class PaintThread extends Thread {
         @Override
@@ -148,7 +148,7 @@ public class PlaneGameFrame extends Frame {
         }
     }
 
-    //¶¨ÒåÎªÄÚ²¿Àà£¬¿ÉÒÔ·½±ãµÄÊ¹ÓÃÍâ²¿ÀàµÄÆÕÍ¨ÊôĞÔ
+    //å®šä¹‰ä¸ºå†…éƒ¨ç±»ï¼Œå¯ä»¥æ–¹ä¾¿çš„ä½¿ç”¨å¤–éƒ¨ç±»çš„æ™®é€šå±æ€§
     class KeyMonotor extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
