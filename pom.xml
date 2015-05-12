@@ -11,5 +11,6 @@
 
     <modules>
         <module>game-plane</module>
+        <module>game-solar</module>
     </modules>
 </project>
